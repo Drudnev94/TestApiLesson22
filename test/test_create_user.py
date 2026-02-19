@@ -39,7 +39,8 @@ class TestCreateUser(PayloadGenerator):
         response_data = response.json()
         print(f"Body: : {response_data}")
 
-    def test_get_docs(self, token):
+    def test_get_docs(self, token, create_and_cleaen_docs):
+        id_docs = create_and_cleaen_docs
         headers = self.HEADERS_DOCS1 | {"Authorization": f"Bearer {token}"}
         response = requests.get(f"{self.BASE_URL}{self.ENDPOINT_DOCS}", headers=headers)
         response_data = response.json()
