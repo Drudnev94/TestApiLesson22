@@ -8,12 +8,11 @@ class ApiPostNotes(BaseApi):
     def __init__(self, token):
         self.token = token
 
-
     def create_notes(self):
         post_create_notes = self.metod_request(
             method="POST",
             # endpoint=self.ENDPOINT,
             need_token=True,
-            json=Jsonforpostnotes.data_post_notes
+            json=Jsonforpostnotes.data_post_notes,
         )
         return post_create_notes

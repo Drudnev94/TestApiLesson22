@@ -5,4 +5,3 @@ class JsonForRegistration:
         "password": "q1w232e3",
         "username": "DIMAR123",
     }
-

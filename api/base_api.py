@@ -7,7 +7,6 @@ class BaseApi:
     token = " "
     ENDPOINT = " "
 
-
     def headers(
         self, need_token: bool
     ):  # Определяем тип хедеров в зависимости от необходимости токена
@@ -22,7 +21,6 @@ class BaseApi:
                 "Accept": "application/json",
                 "Content-Type": "application/json",
             }
-
 
     def metod_request(self, method: str, not_id=None, need_token=False, json=None):
         if not_id:
