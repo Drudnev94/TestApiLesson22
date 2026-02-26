@@ -21,6 +21,7 @@ class Test_Api:
         data_response = response.json()
         print(data_response)
         assert response.status_code == 201
+        assert response.json().get("message") == "Заметка создана!"
 
     def test_get_notes(self, api_get_notes):
         response = api_get_notes.get_all_note()
@@ -39,3 +40,4 @@ class Test_Api:
         data_response = response.json()
         print(data_response)
         assert response.status_code == 200
+        assert response.json()["message"] == "Note deleted!"
