@@ -22,7 +22,7 @@ class BaseApi:
                 "Accept": "application/json",
                 "Content-Type": "application/json",
             }
-"""Метод которырй генерирует нужны урл в зависимости от атрибутов переденных в него"""
+"""Метод которырй генерирует нужный урл в зависимости от атрибутов переденных в него"""
     def _request(self, method: str, not_id=None, need_token=False, json=None):
         if not_id:
             url = f"{self.base_url}{self.ENDPOINT}/{not_id}"
