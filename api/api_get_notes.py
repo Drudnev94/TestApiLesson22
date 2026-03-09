@@ -8,7 +8,7 @@ class ApiGetNotes(BaseApi):
         self.token = token
 
     def get_all_note(self):
-        get_notes = self.metod_request(method="GET", need_token=True)
+        get_notes = self._request(method="GET", need_token=True)
         return get_notes
 
     def get_id_notes(self, title):

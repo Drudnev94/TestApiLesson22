@@ -6,10 +6,11 @@ class ApiAuthorization(BaseApi):
     ENDPOINT = "/api/login"
 
     def autorization_user(self):
-        response_autorization = self.metod_request(
+        response_autorization = self._request(
             method="POST", json=JsonForAuthorization.data_authorization
         )
         return response_autorization
+
 
     def get_token(self):
         token_data = self.autorization_user()

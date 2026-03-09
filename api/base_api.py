@@ -7,9 +7,10 @@ class BaseApi:
     token = " "
     ENDPOINT = " "
 
+"""Определаем тип хедера в зависиомти от необходимости токена"""
+
     def headers(
-        self, need_token: bool
-    ):  # Определяем тип хедеров в зависимости от необходимости токена
+        self, need_token: bool):
         if need_token:
             return {
                 "Accept": "application/json",
@@ -21,13 +22,12 @@ class BaseApi:
                 "Accept": "application/json",
                 "Content-Type": "application/json",
             }
-
-    def metod_request(self, method: str, not_id=None, need_token=False, json=None):
+"""Метод которырй генерирует нужны урл в зависимости от атрибутов переденных в него"""
+    def _request(self, method: str, not_id=None, need_token=False, json=None):
         if not_id:
-            url = f"{self.base_url}{self.ENDPOINT}/{not_id}"  # блок выбирающий урл
+            url = f"{self.base_url}{self.ENDPOINT}/{not_id}"
         else:
             url = f"{self.base_url}{self.ENDPOINT}"
-        response = requests.request(
-            method, url, headers=self.headers(need_token), json=json
-        )  # cам запрос который получает выбранный урл
+        response = requests.request(method, url, headers=self.headers(need_token), json=json)
+
         return response
