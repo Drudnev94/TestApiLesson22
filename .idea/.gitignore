@@ -1,5 +1,6 @@
 # Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
+echo "__pycache__/" >> .gitignore
+echo "*.pyc" >> .gitignore
+echo ".pytest_cache/" >> .gitignore
+echo ".venv/" >> .gitignore
+echo ".idea/" >> .gitignore
