@@ -1,0 +1,6 @@
+# Default ignored files
+echo "__pycache__/" >> .gitignore
+echo "*.pyc" >> .gitignore
+echo ".pytest_cache/" >> .gitignore
+echo ".venv/" >> .gitignore
+echo ".idea/" >> .gitignore
