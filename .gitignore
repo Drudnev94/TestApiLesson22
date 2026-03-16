@@ -4,3 +4,8 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+*.iml
+__pycache__/
+*.pyc
+.venv/
+venv/
