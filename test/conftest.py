@@ -51,6 +51,7 @@ def api_create_notes(api_post_notes):
 def cleaning_after_creation(api_delete_notes,api_get_id_notes):
     yield api_delete_notes.delete_notes(api_get_id_notes)
 
+
 """Создания - перед / удаление - после"""
 @pytest.fixture
 def setup_teardown_note(api_post_notes,api_delete_notes,api_get_id_notes):

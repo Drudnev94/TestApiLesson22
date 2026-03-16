@@ -14,5 +14,6 @@ class ApiGetNotes(BaseApi):
     def get_id_notes(self, title):
         all_note = self.get_all_note().json()
         for note in all_note:
-            if note["title"] == title:
+            if note["title"] == "Тестовая_Заметка":
                 return note["id"]
+

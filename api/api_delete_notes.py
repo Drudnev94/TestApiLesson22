@@ -9,8 +9,9 @@ class ApiDeleteNotes(BaseApi):
         self.token = token
 
     def delete_notes(self,note_id):
-
         response_delete = self._request(
             method="DELETE", not_id=note_id, need_token=True
         )
         return response_delete
+
+

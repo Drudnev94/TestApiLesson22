@@ -1,3 +1,4 @@
+
 # Virtual environments
 .venv/
 venv/
@@ -43,3 +44,16 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+=======
+.idea/
+*.iml
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.iml
+__pycache__/
+*.pyc
+.venv/
+venv/
+
