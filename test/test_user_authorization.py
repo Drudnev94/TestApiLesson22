@@ -6,3 +6,4 @@ class TestUserAuthorization:
         data_response = response.json()
         print(data_response)
         assert response.status_code == 200
+        assert len(data_response["token"]) == 125
