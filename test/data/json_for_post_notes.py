@@ -1,6 +1,6 @@
 class Jsonforpostnotes:
 
     data_post_notes = {
-        "content": "Заметка про заметки",
-        "title": f"Замечательная - Заметка ",
+        "content": "Тестовая_Заметка№1",
+        "title": f"Тестовая_Заметка",
     }
