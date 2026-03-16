@@ -35,11 +35,6 @@ def api_delete_notes(token):
 def token(api_authorization):
      return api_authorization.get_token()
 
-@pytest.fixture
-def invalid_token(token):
-    aut_token = ApiGetNotes(token)
-    aut_token.token = token + "_invalid_suffix"
-    return aut_token
 
 @pytest.fixture
 def api_get_id_notes(api_get_notes):

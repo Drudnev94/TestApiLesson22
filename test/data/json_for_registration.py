@@ -1,7 +1,10 @@
+
 class JsonForRegistration:
 
-    data_for_registration = {
-        "email": "dimaru123@example.su",
-        "password": "q1w232e3",
-        "username": "DIMAR123",
-    }
+    def data_for_registration(self, email = str, password = str, username = str ):
+      return { "email": email, "password": password,"username": username,}
+
+
+
+
+
