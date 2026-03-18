@@ -1,4 +1,3 @@
-from test.data.json_for_registration import JsonForRegistration
 from api.base_api import BaseApi
 from test.helper import Helper
 
