@@ -48,10 +48,11 @@ def api_create_notes(api_post_notes):
 """Удаление созданной заметки после теста"""
 @pytest.fixture
 def cleaning_after_creation(api_delete_notes,api_get_notes):
-    id = (api_get_notes.get_id_notes("Заметка"))
-    yield api_delete_notes.delete_notes(id)
-
-
+    note_id = (api_get_notes.get_id_notes("Заметка"))
+    yield
+    if note_id is not None:
+        if note_id is not None:
+            api_delete_notes.delete_notes(note_id)
 
 """Создания - перед / удаление - после"""
 @pytest.fixture

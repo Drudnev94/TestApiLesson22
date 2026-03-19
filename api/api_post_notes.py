@@ -13,14 +13,16 @@ class ApiPostNotes(BaseApi):
         self.last_body = None
 
 
-    def create_notes(self,content = "Заметка№_1", title = "Заметка"):
-        body= Jsonforpostnotes().body(content,title)
+    def create_notes(self):
+        body= Jsonforpostnotes().body("Заметка","Заметка")
         self.last_body = body
+
         post_create_notes = self._request(
             method="POST",
             need_token=True,
             json=body,
         )
+
         return post_create_notes
         """Возврат boby для api_get_id_notes """
     def return_body_notes(self,body= None):
