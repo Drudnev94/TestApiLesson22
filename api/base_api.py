@@ -6,9 +6,8 @@ class BaseApi:
     token = " "
     ENDPOINT = " "
 
-    """Определяем тип хедера в зависимости от необходимости токена"""
-
     def headers(self, need_token: bool):
+        """Определяем тип хедера в зависимости от необходимости токена"""
         if need_token:
             return {
                 "Accept": "application/json",
@@ -21,13 +20,14 @@ class BaseApi:
                 "Content-Type": "application/json",
             }
 
-    """Метод, который генерирует нужный URL в зависимости от атрибутов, переданных в него"""
-
     def _request(self, method: str, not_id=None, need_token=False, json=None):
+        """Генерация Url в зависимости от heders"""
         if not_id:
             url = f"{self.base_url}{self.ENDPOINT}/{not_id}"
         else:
             url = f"{self.base_url}{self.ENDPOINT}"
-        response = requests.request(method, url, headers=self.headers(need_token), json=json)
+        response = requests.request(
+            method, url, headers=self.headers(need_token), json=json
+        )
 
         return response

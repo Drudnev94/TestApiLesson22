@@ -1,6 +1,6 @@
-
 class TestCreateNote:
-    def test_create_notes(self, api_post_notes,cleaning_after_creation,api_get_id_notes):
+    def test_create_notes(self, api_post_notes, cleaning_after_creation):
+        """Возможно указать кастомные данные для создания: content, title.(требует изменений в api)"""
         response = api_post_notes.create_notes()
         data = response.json()
         assert response.status_code == 201

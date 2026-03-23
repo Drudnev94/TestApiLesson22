@@ -3,7 +3,7 @@ from api.api_authorization import ApiAuthorization
 from api.api_post_notes import ApiPostNotes
 from api.api_get_notes import ApiGetNotes
 from api.api_delete_notes import ApiDeleteNotes
-from test.data.json_for_post_notes import Jsonforpostnotes
+from test.data.json_for_post_notes import data_for_notes
 
 import pytest
 
@@ -11,6 +11,7 @@ import pytest
 @pytest.fixture
 def api_registration():
     return ApiRegistretion()
+
 
 @pytest.fixture
 def api_authorization():
@@ -21,53 +22,44 @@ def api_authorization():
 def api_post_notes(token):
     return ApiPostNotes(token)
 
+
 @pytest.fixture
 def api_get_notes(token):
     return ApiGetNotes(token)
 
+
 @pytest.fixture
 def api_delete_notes(token):
-     return ApiDeleteNotes(token)
+    return ApiDeleteNotes(token)
+
 
 @pytest.fixture
 def token(api_authorization):
-     return api_authorization.get_token()
+    return api_authorization.get_token()
 
 
 @pytest.fixture
-def api_get_id_notes(api_get_notes,api_post_notes,api_create_notes):
-    body = api_post_notes.return_body_notes()
-    title = body["title"]
+def api_get_id_notes(api_get_notes, api_create_notes):
+    title = data_for_notes["title"]
     return api_get_notes.get_id_notes(title=title)
 
-"""Создание заметки перед тестом"""
+
 @pytest.fixture
 def api_create_notes(api_post_notes):
-    return  api_post_notes.create_notes()
+    """Создание заметки перед тестом"""
+    return api_post_notes.create_notes()
 
-"""Удаление созданной заметки после теста"""
+
 @pytest.fixture
-def cleaning_after_creation(api_delete_notes,api_get_notes):
-    note_id = (api_get_notes.get_id_notes("Заметка"))
+def cleaning_after_creation(api_delete_notes, api_get_notes):
+    """Удаление созданной заметки после теста"""
     yield
-    if note_id is not None:
-        if note_id is not None:
-            api_delete_notes.delete_notes(note_id)
+    note_id = api_get_notes.get_id_notes()
+    api_delete_notes.delete_notes(note_id)
 
-"""Создания - перед / удаление - после"""
+
 @pytest.fixture
-def setup_teardown_note(api_post_notes,api_delete_notes,api_get_id_notes):
-    api_post_notes.create_notes()
-    yield (
-        api_delete_notes.delete_notes(api_get_id_notes))
-
-
-
-
-
-
-
-
-
-
-
+def setup_teardown_note(api_delete_notes, api_get_id_notes):
+    """Создания - перед / удаление - после"""
+    yield
+    api_delete_notes.delete_notes(api_get_id_notes)

@@ -1,7 +1,4 @@
-
-class JsonForAuthorization:
-
-    def get_data_autorization(self,login = str, password = str):
-        return  {"email": login, "password": password,}
-
-
+json_for_autorization = {
+    "email": "dimaru123@example.su",
+    "password": "q1w232e3",
+}
