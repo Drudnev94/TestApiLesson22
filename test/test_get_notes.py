@@ -4,6 +4,7 @@ class TestGetNotes:
         response = api_get_notes.get_all_note()
         data = response.json()
         assert response.status_code == 200
+        assert len(data) > 0
         assert isinstance(data, list)
         """Проверка обязательных полей"""
         note = data[0]
@@ -17,3 +18,12 @@ class TestGetNotes:
         assert isinstance(note["title"], str)
         assert isinstance(note["content"], str)
         assert isinstance(note["date_posted"], str)
+
+    def test_get_notes_without_token(
+        self, api_get_notes_invalid_token, setup_teardown_note
+    ):
+        response = api_get_notes_invalid_token.get_all_note()
+        json_data = response.json()
+        assert response.status_code == 403
+        assert json_data["message"] == "Token is invalid or expired!"
+        assert isinstance(json_data, dict)

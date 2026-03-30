@@ -9,10 +9,7 @@ class ApiPostNotes(BaseApi):
         self.token = token
         self.last_body = None
 
-    def create_notes(
-        self, content=data_for_notes["content"], title=data_for_notes["title"]
-    ):
-        """По умолчанию данные из json_for_notes"""
+    def create_notes(self, content, title):
         json = {
             "content": content,
             "title": title,

@@ -12,16 +12,11 @@ class ApiGetNotes(BaseApi):
         get_notes = self._request(method="GET", need_token=True)
         return get_notes
 
-    def get_id_notes(self,title= data_for_notes["title"]):
+    def get_id_notes(self, title=data_for_notes["title"]):  #  Динамика
         """Получение Id заметки по конкретному title"""
         all_note = self.get_all_note().json()
-        if all_note is None:
-            return None
-
         for note in all_note:
             if note["title"] == title:
                 return note["id"]
 
-        return  None
-
-
+        return None

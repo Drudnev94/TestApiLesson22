@@ -5,12 +5,10 @@ from test.data.json_for_authorization import json_for_autorization
 class ApiAuthorization(BaseApi):
     ENDPOINT = "/api/login"
 
-    def autorization_user(
-        self, login=json_for_autorization["email"], password=["password"]
-    ):
+    def autorization_user(self, login, password):
         """Авторизация пользователя с указанием данных, по умолчанию данные: json_for_autorization"""
-        data_json = {"email": login, "password": password}
-        response_autorization = self._request(method="POST", json=data_json)
+        json = {"email": login, "password": password}
+        response_autorization = self._request(method="POST", json=json)
         return response_autorization
 
     def get_token(self):

@@ -1,5 +1,5 @@
 data_for_registration = {
-    "email": "dv3r@yandex.ru",
+    "email": "dv32r@yandex.ru",
     "password": "qwe123",
-    "username": "DVR1234",
+    "username": "DVR12234",
 }

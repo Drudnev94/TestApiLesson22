@@ -1,4 +1,4 @@
-from api.api_registration import ApiRegistretion
+from api.api_registration import ApiRegistration
 from api.api_authorization import ApiAuthorization
 from api.api_post_notes import ApiPostNotes
 from api.api_get_notes import ApiGetNotes
@@ -10,7 +10,7 @@ import pytest
 
 @pytest.fixture
 def api_registration():
-    return ApiRegistretion()
+    return ApiRegistration()
 
 
 @pytest.fixture
@@ -24,12 +24,35 @@ def api_post_notes(token):
 
 
 @pytest.fixture
+def api_post_notes_without_token():
+    return ApiPostNotes(None)
+
+
+@pytest.fixture
+def api_post_notes_invalid_token(token):
+    token = "121234dsafefegewgf"
+    return ApiPostNotes(token)
+
+
+@pytest.fixture
 def api_get_notes(token):
     return ApiGetNotes(token)
 
 
 @pytest.fixture
+def api_get_notes_invalid_token(token):
+    token = "121234dsafefegewgf"
+    return ApiGetNotes(token)
+
+
+@pytest.fixture
 def api_delete_notes(token):
+    return ApiDeleteNotes(token)
+
+
+@pytest.fixture
+def api_delete_notes_invalid_token(token):
+    token = "121234dsafefegewgf"
     return ApiDeleteNotes(token)
 
 
@@ -47,7 +70,9 @@ def api_get_id_notes(api_get_notes, api_create_notes):
 @pytest.fixture
 def api_create_notes(api_post_notes):
     """Создание заметки перед тестом"""
-    return api_post_notes.create_notes()
+    return api_post_notes.create_notes(
+        data_for_notes["content"], data_for_notes["title"]
+    )
 
 
 @pytest.fixture

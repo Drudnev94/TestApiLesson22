@@ -3,8 +3,8 @@ import requests
 
 class BaseApi:
     base_url = "http://185.240.103.201:8000"
-    token = " "
-    ENDPOINT = " "
+    token = ""
+    ENDPOINT = ""
 
     def headers(self, need_token: bool):
         """Определяем тип хедера в зависимости от необходимости токена"""
